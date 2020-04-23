@@ -10,7 +10,6 @@ module.exports = (knex, User) => {
         new Error("Username must be provided, and be at least two characters")
       );
     }
-
     return knex("users")
       .insert({ username: username.toLowerCase() })
       .then(() => {
