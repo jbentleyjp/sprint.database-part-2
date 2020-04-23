@@ -96,7 +96,7 @@ describe("channels", () => {
       params.name = "general";
     });
 
-    // afterEach(() => knex("channels").del());
+    afterEach(() => knex("channels").del());
 
     it("creates a channel", () =>
       models.channels.create(params).then((channel) => {
@@ -128,11 +128,11 @@ describe("channels", () => {
     });
   });
 
-  describe.only("#list", () => {
+  describe("#list", () => {
     const channelNames = ["general", "random"];
     const channels = channelNames.map((name) => ({ name }));
     before(() => Promise.all(channels.map(models.channels.create)));
-    // after(() => knex("channels").del());
+    after(() => knex("channels").del());
 
     it("lists all channels", () =>
       models.channels.list().then((resp) => {
@@ -149,7 +149,7 @@ describe("channels", () => {
   });
 });
 
-describe("channel_messages", () => {
+describe.only("channel_messages", () => {
   let fromId;
   let channelId;
   let otherChannelId;
