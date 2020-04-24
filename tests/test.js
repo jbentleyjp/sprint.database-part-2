@@ -149,7 +149,7 @@ describe("channels", () => {
   });
 });
 
-describe.only("channel_messages", () => {
+describe("channel_messages", () => {
   let fromId;
   let channelId;
   let otherChannelId;
@@ -244,7 +244,7 @@ describe.only("channel_messages", () => {
   });
 });
 
-describe("user_messages", () => {
+describe.only("user_messages", () => {
   let fromId;
   let toId;
   let otherToId;

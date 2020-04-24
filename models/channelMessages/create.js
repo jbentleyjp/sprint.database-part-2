@@ -16,7 +16,6 @@ module.exports = (knex, channelMessage) => {
         "channel_messages.sent_at as sent_at"
       );
     return keys.map((mess) => {
-      console.log("mess.username", mess.username);
       return new channelMessage(mess);
     });
   };
