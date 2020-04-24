@@ -6,16 +6,17 @@ module.exports = (knex, UserMessage) => {
       .innerJoin("users", "users.id", "user_messages.from_id")
       .select(
         "user_messages.id",
-        "user_messages.from_id as from",
+        "users.username as from",
         "user_messages.to_id as to_id",
         "user_messages.message as message",
         "user_messages.sent_at as sent_at"
       )
-      .where({ from_id: fromId, to_id: toId });
-    console.log({ allUserMessages }, "ALL");
-    return allUserMessages.map((messages) => {
-      console.log(messages, "ONE");
+      .where({ to_id: fromId, from_id: toId })
+      .orWhere({ to_id: toId, from_id: fromId });
+
+    const allMSGs = await allUserMessages.map((messages) => {
       return new UserMessage(messages);
     });
+    return allMSGs;
   };
 };

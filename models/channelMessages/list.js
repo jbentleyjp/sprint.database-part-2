@@ -15,10 +15,3 @@ module.exports = (knex, ChannelMessage) => {
     return allMessages.map((messages) => new ChannelMessage(messages));
   };
 };
-
-// return async () => {
-//     const allChannels = await knex("channels").select();
-//     const newChannels = allChannels.map((channels) => new Channel(channels));
-//     return newChannels;
-//   };
-// };

@@ -118,12 +118,11 @@ describe("channels", () => {
         models.channels
           .create(params)
           .then(forcePromiseReject)
-          .catch(
-            (err) =>
-              expect(err.message).to.equal(
-                "This promise should have failed, but did not."
-              )
-            // expect(err.message).to.equal("That channel already exists")
+          .catch((err) =>
+            expect(err.message).to.equal(
+              "This promise should have failed, but did not."
+              // expect(err.message).to.equal("That channel already exists")
+            )
           ));
     });
   });
@@ -244,7 +243,7 @@ describe("channel_messages", () => {
   });
 });
 
-describe.only("user_messages", () => {
+describe("user_messages", () => {
   let fromId;
   let toId;
   let otherToId;

@@ -5,14 +5,9 @@ module.exports = (knex, UserMessage) => {
       to_id: params.toId,
       message: params.message,
     });
+
     const keys = await knex("user_messages")
       .innerJoin("users", "users.id", "user_messages.from_id")
-      // .innerJoin("channels", "channels.id", "user_messages.to_id")
-      // .innerJoin(
-      //   "channel_messages",
-      //   "channel_messages.message",
-      //   "user_messages.message"
-      // )
       .select(
         "user_messages.id",
         "users.username as from",
@@ -24,4 +19,3 @@ module.exports = (knex, UserMessage) => {
     });
   };
 };
-// id, from_id, to_id, message and sent_at
